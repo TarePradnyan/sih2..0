@@ -1,0 +1,176 @@
+:root {
+    --primary-green: #4CAF50;
+    --light-green: #E8F5E9;
+    --dark-green: #388E3C;
+    --text-color: #333;
+    --background-color: #F9F9F9;
+    --card-background: #FFF;
+    --border-color: #ddd;
+}
+
+/* Global styles for consistency */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    color: var(--text-color);
+}
+
+.header {
+    background-color: var(--primary-green);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap; 
+    flex-direction: row;
+}
+
+h3{
+    color: var(--primary-green);
+}
+
+.logo {
+    margin: 0;
+    font-weight: 600;
+    white-space: nowrap;
+
+}
+
+.header-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    order: 1;
+}
+
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto; /* pushes it to the right inside header */
+    margin-right: 15px;
+}
+
+.login-container a{
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.login-container a:hover,
+.login-container a.active {    
+    background-color: var(--dark-green);
+}
+
+.navbar {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    order: 3;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.navbar .nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    background-color: var(--dark-green);
+}
+
+.main-content {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto; 
+    box-sizing: border-box;
+}
+
+.section-title {
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--primary-green);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 600px){
+    body {
+        font-size: 14px; /* shrink base text */
+    }
+
+    .header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .header-top {
+        display: flex;
+        flex-direction: row;       /* logo + login on the same line */
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .navbar {
+        justify-content: center;
+        width: 100%;
+        gap: 8px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .main-content {
+        padding: 10px;
+    }
+    
+    .nav-link {
+        padding: 5px 10px;
+    }
+
+    .navbar .nav-link {
+        flex: 1 1 auto;
+        text-align: center;
+        padding: 6px;
+        font-size: 0.9rem;
+    }
+
+    .login-container {
+        margin-left: 0;
+        justify-content: flex-end;
+        width: 100%;
+    }
+
+    .login-container a {
+        display: inline-block;
+        margin-top: 5px;
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+}

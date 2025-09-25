@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kisaan Mitra - Dashboard</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/global.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-top">
+            <h1 class="logo">Kisaan Mitra</h1>
+            <div class="login-container">
+                <a href="templates/farmer_login.html" class="nav-link login-btn"data-translate="nav_login">Login</a>
+            </div>
+        </div>
+        <nav class="navbar">
+            <a href="index.html" class="nav-link active" data-translate="nav_home">Home 🏠</a>
+            <a href="templates/comm.html" class="nav-link"data-translate="nav_community">Community 🌱</a>
+            <a href="templates/crop_sugg.html" class="nav-link">Crop Suggestion❓</a>
+            <a href="templates/market.html" class="nav-link"data-translate="nav_market">Market Prices 💰</a>
+            <a href="templates/soil_health.html" class="nav-link"data-translate="nav_soil">Soil Health 🌾</a>      
+        </nav>
+        </nav>
+    <div class="lang-switcher">
+        <button id="lang-en" class="lang-btn" data-translate="lang_en">English</button>
+        <button id="lang-pa" class="lang-btn" data-translate="lang_pa">ਪੰਜਾਬੀ</button>
+        <button id="lang-hi" class="lang-btn" data-translate="lang_hi">हिंदी</button>
+    </div>
+</header>
+
+
+    <main class="main-content">
+        <section class="ticker-section">
+            <div class="ticker-container">
+                <div class="ticker-content" id="newsTicker">
+                    <span class="ticker-item">🌾 Alert: The live market price of wheat has increased by 5% today!</span>
+                    <span class="ticker-item">⚠️ Warning: There is a high chance of heavy rainfall in Amritsar district
+                        tomorrow. Prepare your crops accordingly.</span>
+                    <span class="ticker-item">💡 Tip: Use natural pesticides for better soil health and higher crop
+                        yield.</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="dashboard-section">
+            <h2 class="section-title">Dashboard</h2>
+            <div class="dashboard-grid">
+                <div class="card weather-card">
+                    <h3>Weather Update</h3>
+                    <div id="weatherInfo">
+                        <p>Loading weather data...</p>
+                    </div>
+                </div>
+                <div class="card advisory-card">
+                    <h3>AI Advisory</h3>
+                    <p>Get personalized solutions for your crops.</p>
+                </div>
+                <a href="templates/market.html" class="card-link">
+                    <div class="card market-card">
+                        <h3>Market Prices</h3>
+                        <p>Live rates & future price predictions</p>
+                    </div>
+                </a>
+                <a href="templates/comm.html" class="card-link">
+                    <div class="card community-card">
+                        <h3>Farmer Community</h3>
+                        <p>Connect with other farmers & experts</p>
+                    </div>
+                </a>
+                <a href="templates/soil_health.html" class="card-link">
+                    <div class="card soil-card">
+                        <h3>Soil Health</h3>
+                        <p>Test your soil and get recommendations</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="university-marketing">
+            <h2 class="section-title">University Tie-ups</h2>
+            <div class="uni-card">
+                <img src="https://via.placeholder.com/150" alt="University Logo" class="uni-logo">
+                <div class="uni-info">
+                    <h3>Punjab Agricultural University</h3>
+                    <p>Learn new farming techniques from the experts.</p>
+                    <a href="#" class="learn-more-btn">Learn More</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+      <script src="static/js/lang_switch.js"></script>
+        <script src="static/js/language.js"></script>
+</body>
+
+</html>

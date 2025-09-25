@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kisaan Mitra - Market Prices</title>
+    <link rel="stylesheet" href="../static/css/global.css">
+    <link rel="stylesheet" href="../static/css/market.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<header class="header">
+      <div class="header-top">
+        <h1 class="logo">Kisaan Mitra</h1>
+        <div class="login-container">
+          <a href="" class="nav-link login-btn">Login</a>
+        </div>
+      </div>
+      <nav class="navbar">
+        <a href="./home.html" class="nav-link">Home 🏠</a>
+        <a href="./comm.html" class="nav-link">Community 🌱</a>
+        <a href="./crop_sugg.html" class="nav-link">Crop Suggestion❓</a>
+        <a href="./market.html" class="nav-link active">Market Prices 💰</a>
+        <a href="./soil_health.html" class="nav-link">Soil Health 🌾</a>
+      </nav>
+    </header>
+
+    <main class="main-content">
+        <h2 class="section-title">Market Price Intelligence</h2>
+        
+        <!-- Market Summary -->
+        <div class="market-summary">
+            <div class="summary-card">
+                <div class="summary-title">Today's Top Gainer</div>
+                <div class="summary-value">Cotton</div>
+                <div class="summary-change positive">↗ +₹150/quintal (+5.2%)</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-title">Market Trend</div>
+                <div class="summary-value">Bullish</div>
+                <div class="summary-change positive">↗ 6 crops rising</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-title">Average Price Index</div>
+                <div class="summary-value">₹2,847</div>
+                <div class="summary-change positive">↗ +2.3% from yesterday</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-title">Last Updated</div>
+                <div class="summary-value" id="lastUpdated">Loading...</div>
+                <div class="summary-change text-muted">Auto-refresh: ON</div>
+            </div>
+        </div>
+
+        <div class="price-container">
+            <!-- Filter Controls -->
+            <div class="controls">
+                <div class="control-group">
+                    <label class="control-label">Market Location</label>
+                    <select class="control-input" id="marketSelect">
+                        <option value="all">All Markets</option>
+                        <option value="delhi">Delhi (Azadpur)</option>
+                        <option value="mumbai">Mumbai (Vashi)</option>
+                        <option value="kolkata">Kolkata (Mechua)</option>
+                        <option value="chennai">Chennai (Koyambedu)</option>
+                        <option value="ludhiana">Ludhiana</option>
+                        <option value="ahmedabad">Ahmedabad</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Time Range</label>
+                    <select class="control-input" id="timeRange">
+                        <option value="1d">1 Day</option>
+                        <option value="7d" selected>7 Days</option>
+                        <option value="1m">1 Month</option>
+                        <option value="3m">3 Months</option>
+                        <option value="6m">6 Months</option>
+                        <option value="1y">1 Year</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Actions</label>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn" onclick="refreshData()">🔄 Refresh</button>
+                        <button class="btn btn-secondary" onclick="exportData()">📊 Export</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Price Display -->
+            <div class="price-display" id="priceDisplay">
+                <!-- Price cards will be dynamically generated -->
+            </div>
+
+            <!-- Detailed Charts -->
+            <div class="graph-container">
+                <div class="graph" id="wheatGraph">
+                    <div class="graph-header">
+                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=100&h=100&fit=crop&crop=center" alt="Wheat">
+                        <div>
+                            <h2>Wheat</h2>
+                            <div class="text-muted">Winter Crop</div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="wheatChart"></canvas>
+                    </div>
+                    <div class="price-stats">
+                        <div class="stat">
+                            <div class="stat-label">Current</div>
+                            <div class="stat-value">₹2,400</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">7-Day High</div>
+                            <div class="stat-value">₹2,450</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">7-Day Low</div>
+                            <div class="stat-value">₹2,350</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Change</div>
+                            <div class="stat-value text-success">+2.1%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="graph" id="riceGraph">
+                    <div class="graph-header">
+                        <img src="https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=100&h=100&fit=crop&crop=center" alt="Rice">
+                        <div>
+                            <h2>Rice</h2>
+                            <div class="text-muted">Kharif Crop</div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="riceChart"></canvas>
+                    </div>
+                    <div class="price-stats">
+                        <div class="stat">
+                            <div class="stat-label">Current</div>
+                            <div class="stat-value">₹3,400</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">7-Day High</div>
+                            <div class="stat-value">₹3,450</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">7-Day Low</div>
+                            <div class="stat-value">₹3,300</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Change</div>
+                            <div class="stat-value text-success">+3.0%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="graph" id="sugarcaneGraph">
+                    <div class="graph-header">
+                        <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=100&h=100&fit=crop&crop=center" alt="Sugarcane">
+                        <div>
+                            <h2>Sugarcane</h2>
+                            <div class="text-muted">Cash Crop</div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="sugarcaneChart"></canvas>
+                    </div>
+                    <div class="price-stats">
+                        <div class="stat">
+                            <div class="stat-label">Current</div>
+                            <div class="stat-value">₹1,750</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">7-Day High</div>
+                            <div class="stat-value">₹1,780</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">7-Day Low</div>
+                            <div class="stat-value">₹1,720</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Change</div>
+                            <div class="stat-value text-success">+1.7%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="graph" id="barleyGraph">
+                    <div class="graph-header">
+                        <img src="https://images.unsplash.com/photo-1569976710208-b52b1dd58d85?w=100&h=100&fit=crop&crop=center" alt="Barley">
+                        <div>
+                            <h2>Barley</h2>
+                            <div class="text-muted">Rabi Crop</div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="barleyChart"></canvas>
+                    </div>
+                    <div class="price-stats">
+                        <div class="stat">
+                            <div class="stat-label">Current</div>
+                            <div class="stat-value">₹2,100</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">7-Day High</div>
+                            <div class="stat-value">₹2,120</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">7-Day Low</div>
+                            <div class="stat-value">₹2,050</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Change</div>
+                            <div class="stat-value text-success">+2.4%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="graph" id="bajraGraph">
+                    <div class="graph-header">
+                        <img src="https://images.unsplash.com/photo-1595855759920-86582396756a?w=100&h=100&fit=crop&crop=center" alt="Bajra">
+                        <div>
+                            <h2>Bajra</h2>
+                            <div class="text-muted">Millet Crop</div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="bajraChart"></canvas>
+                    </div>
+                    <div class="price-stats">
+                        <div class="stat">
+                            <div class="stat-label">Current</div>
+                            <div class="stat-value">₹2,400</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">7-Day High</div>
+                            <div class="stat-value">₹2,420</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">7-Day Low</div>
+                            <div class="stat-value">₹2,380</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Change</div>
+                            <div class="stat-value stable">0.0%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="graph" id="cottonGraph">
+                    <div class="graph-header">
+                        <img src="https://images.unsplash.com/photo-1463871273229-dd4cb7dc563d?w=100&h=100&fit=crop&crop=center" alt="Cotton">
+                        <div>
+                            <h2>Cotton</h2>
+                            <div class="text-muted">Fiber Crop</div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="cottonChart"></canvas>
+                    </div>
+                    <div class="price-stats">
+                        <div class="stat">
+                            <div class="stat-label">Current</div>
+                            <div class="stat-value">₹2,900</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">7-Day High</div>
+                            <div class="stat-value">₹2,950</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">7-Day Low</div>
+                            <div class="stat-value">₹2,750</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Change</div>
+                            <div class="stat-value text-success">+5.2%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI-Powered Price Predictions -->
+            <div class="prediction-panel">
+                <div class="prediction-title">
+                    🤖 AI Price Predictions for Next Week
+                </div>
+                <div class="prediction-content">
+                    <div class="prediction-item">
+                        <div class="prediction-crop">Wheat</div>
+                        <div class="prediction-text">Expected to rise by 2-3% due to strong export demand and reduced inventory levels.</div>
+                    </div>
+                    <div class="prediction-item">
+                        <div class="prediction-crop">Rice</div>
+                        <div class="prediction-text">Stable prices expected with slight upward trend of 1-2% on monsoon optimism.</div>
+                    </div>
+                    <div class="prediction-item">
+                        <div class="prediction-crop">Cotton</div>
+                        <div class="prediction-text">Strong bullish trend continues. Potential 3-5% increase on global textile demand.</div>
+                    </div>
+                    <div class="prediction-item">
+                        <div class="prediction-crop">Sugarcane</div>
+                        <div class="prediction-text">Moderate growth of 1-2% expected as sugar mills increase procurement rates.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../static/js/market.js"></script>
+</body>
+</html>

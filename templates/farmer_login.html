@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kisaan Mitra - Login</title>
+    <link rel="stylesheet" href="../static/css/farmer_login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <main class="login-container">
+        <div class="login-card">
+            <div class="back-btn">
+                <a href="./home.html">&times;</a>
+            </div>
+            <h1 class="logo">Kisaan Mitra</h1>
+            <p class="tagline">Your partner in modern farming.</p>
+            
+            <form id="phoneForm" class="login-form">
+                <div class="input-group">
+                    <label for="phone">Mobile Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your 10-digit number" autocomplete="tel-national" required>
+                    <small id="phoneError" class="error-message"></small>
+                </div>
+                <button type="submit" class="btn-primary">Send OTP</button>
+            </form>
+
+            <form id="otpForm" class="login-form hidden">
+                <p>An OTP has been sent to your number.</p>
+                <div class="input-group">
+                    <label for="otp">Enter OTP</label>
+                    <input type="text" id="otp" name="otp" inputmode="numeric" placeholder="e.g., 123456" autocomplete="one-time-code" required>
+                    <small id="otpError" class="error-message"></small>
+                </div>
+                <button type="submit" class="btn-primary">Verify & Login</button>
+            </form>
+            <a class="uni-login" href="../templates/uni_login.html" class="University-login-link">
+                University login
+            </a>
+        </div>
+    </main>
+
+    <script src="../static/js/farmer_login.js"></script>
+</body>
+</html>

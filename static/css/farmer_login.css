@@ -1,0 +1,186 @@
+:root {
+    --primary-green: #4CAF50;
+    --light-green: #E8F5E9;
+    --dark-green: #388E3C;
+    --text-color: #333;
+    --background-color: #F9F9F9;
+    --card-background: #FFF;
+    --border-color: #ddd;
+    --error-color: #D32F2F;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+.login-container {
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.login-card {
+    position: relative;
+    background-color: var(--card-background);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.logo {
+    color: var(--primary-green);
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+.tagline {
+    color: #666;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center; 
+}
+
+.input-group {
+    width: 100%;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-green);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: var(--dark-green);
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: block;
+    visibility: hidden;
+}
+
+.hidden {
+    display: none;
+}
+
+.back-btn {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #4CAF50;
+    padding: 5px 5px;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.back-btn a{
+    color: white;
+    text-decoration: none;
+}
+
+.back-btn:hover {
+    background-color: #388E3C;
+}
+
+.uni-login{
+    color: var(--primary-green);
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    font-weight: 600;
+    transition: text-decoration 0.3s;
+}
+
+.uni-login:hover {
+    text-decoration: underline;
+
+}
+
+@media (max-width: 360px) {
+    .login-card {
+        position: relative;
+        padding: 15px; /* smaller padding so it fits the screen */
+    }
+
+    .logo {
+        font-size: 2rem; /* shrink logo text */
+    }
+
+    .btn-primary {
+        padding: 12px;
+        font-size: 1rem;
+    }
+
+    .input-group input {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+
+    .tagline {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+}
+
+
+:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}

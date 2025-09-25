@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kisaan Mitra - Market Prices</title>
+    <link rel="stylesheet" href="../static/css/global.css"/>
+    <link rel="stylesheet" href="../static/css/crop_sugg.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-top">
+        <h1 class="logo">Kisaan Mitra</h1>
+        <div class="login-container">
+          <a href="./farmer_login.html" class="nav-link login-btn">Login</a>
+        </div>
+      </div>
+      <nav class="navbar">
+        <a href="./home.html" class="nav-link">Home 🏠</a>
+        <a href="./comm.html" class="nav-link">Community 🌱</a>
+        <a href="./crop_sugg.html" class="nav-link active">Crop Suggestion❓</a>
+        <a href="./market.html" class="nav-link">Market Prices 💰</a>
+        <a href="./soil_health.html" class="nav-link">Soil Health 🌾</a>
+      </nav>
+    </header>
+
+<main class="main-content">
+      <h2 class="section-title">Crop Suggestion</h2>
+        <div class="AI-tool-container">
+          <h3>Crop Suggestion Tool</h3>
+          <p>Get personalized crop suggestions based on your soil data and preferences.</p>
+          <a href="../template/crop_sugg.html" class="action-btn">Get Started</a>
+        </div>
+        <div class="container">
+            <div class="crop-container">
+                <img src="../img/crop/wheat_1.webp" alt="Wheat" loading="lazy">
+                <div class="info">
+                    <h3>Wheat</h3>
+                    <p>Optimal for temperate climates with well-drained loamy soil.</p>
+                </div>
+            </div>
+            <div class="crop-container">
+                <img src="../img/crop/rice_1.webp" alt="Rice" loading="lazy">
+                <div class="info">
+                    <h3>Rice</h3>
+                    <p>Thrives in warm, humid climates with clayey or silty soil.</p>
+                </div>
+            </div>
+            <div class="crop-container">
+                <img src="../img/crop/sugarcane_1.webp" alt="Sugarcane" loading="lazy">
+                <div class="info">
+                    <h3>Sugarcane</h3>
+                    <p>Prefers tropical climates with rich, well-drained soil.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../static/js/crop_sugg.js"></script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+.soil-container {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.version-selection {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-version {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.free-btn {
+    background-color: #e0f2f1;
+    color: #00796b;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.free-btn:active{
+    background-color: #00796b;
+    color: #e0f2f1;
+
+}
+
+.paid-btn {
+    background-color: #c8e6c9;
+    color: var(--dark-green);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.paid-btn:active{
+    background-color: var(--dark-green);
+    color: #c8e6c9;
+} 

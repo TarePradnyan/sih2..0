@@ -1,0 +1,172 @@
+.ticker-section {
+    background-color: var(--light-green);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+
+.ticker-container {
+    white-space: nowrap;
+    animation: scroll-left 25s linear infinite;
+}
+
+.ticker-item {
+    display: inline-block;
+    padding-right: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.card-link {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.card {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    cursor: pointer;
+    min-height: 120px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.uni-card {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.uni-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.learn-more-btn {
+    display: inline-block;
+    background-color: var(--primary-green);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+    .uni-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+span.ticker-item {
+    background-color: rgb(233, 167, 167);
+}
+
+/* For Mobile */
+
+/* Extra mobile refinements */
+@media (max-width: 600px) {
+    .logo {
+        font-size: 1.3rem;
+        white-space: nowrap;
+    }
+
+    .ticker-section {
+        padding: 5px 0;
+    }
+
+    .ticker-item {
+        font-size: 0.8rem;
+        padding-right: 30px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        /* 1 card per row */
+        gap: 12px;
+    }
+
+    .card {
+        min-height: auto;
+        padding: 15px;
+    }
+
+    .card h3 {
+        font-size: 1rem;
+    }
+
+    .card p {
+        font-size: 0.85rem;
+    }
+
+    .uni-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+        padding: 15px;
+    }
+
+    .uni-logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .learn-more-btn {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+    }
+}
+
+/* Add to your existing CSS file */
+.lang-switcher {
+    display: flex;
+    gap: 5px;
+}
+
+.lang-btn {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.lang-btn.active {
+    background-color: white;
+    color: var(--primary-green);
+    font-weight: bold;
+}
