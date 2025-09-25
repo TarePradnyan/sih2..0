@@ -97,7 +97,43 @@ def Message(data):
     name = data["name"]
     pincode = data["pincode"]
     msg = data["msg"]
-    send(f"{name}: {msg}", to=pincode)
+
+    # Store in the database
+    with sqlite3.connect(DATABASE) as conn:
+        c = conn.cursor()
+        c.execute("INSERT INTO messages (room, name, msg) VALUES (?, ?, ?)", (pincode, name, msg))
+        conn.commit()
+
+    # Broadcast the message
+    send({"name": name, "msg": msg}, to=pincode)
+
+
+@app.route("/get_chat/<pincode>")
+def get_chat(pincode):
+    with sqlite3.connect(DATABASE) as conn:
+        c = conn.cursor()
+        c.execute("SELECT name, msg, timestamp FROM messages WHERE room=? ORDER BY timestamp ASC", (pincode,))
+        rows = c.fetchall()
+        messages = [{"name": row[0], "msg": row[1], "timestamp": row[2]} for row in rows]
+    return jsonify(messages)
+
+
+
+def init_db():
+    with sqlite3.connect(DATABASE) as conn:
+        c = conn.cursor()
+        c.execute("""
+            CREATE TABLE IF NOT EXISTS messages (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                room TEXT NOT NULL,
+                name TEXT NOT NULL,
+                msg TEXT NOT NULL,
+                timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+            );
+        """)
+        conn.commit()
+
+init_db()  # Call this once at startup
 
 
 
