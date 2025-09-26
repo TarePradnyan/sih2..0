@@ -78,4 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         weatherInfo.innerHTML = `<p>⚠️ Geolocation not supported.</p>`;
     }
+
+
 });
