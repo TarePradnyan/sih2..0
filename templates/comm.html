@@ -31,17 +31,33 @@
         </nav>
     </header>
 
-    <main class="main-content">
-        <h2 class="section-title">Farmer Community + AI Chatbot</h2>
-        <div class="community-container">
-            <div class="chat-interface">
-                <p>Chat with the AI or post a query to the community.</p>
-            </div>
-            <div class="posts-list">
-                <p>Community posts will appear here...</p>
-            </div>
+<main class="main-content">
+    <h2 class="section-title">Farmer Community + AI Chatbot</h2>
+    <div class="community-container">
+
+        <!-- Post Form -->
+        <form method="POST" class="post-form">
+            <input type="text" name="user" placeholder="Your Name" required>
+            <textarea name="content" placeholder="Write your query or message..." required></textarea>
+            <button type="submit">Post</button>
+        </form>
+
+        <!-- Posts Section -->
+        <div class="posts-list">
+            {% for post in posts %}
+                <div class="post">
+                    <div class="user">{{ post.user }}</div>
+                    <div class="content">{{ post.content }}</div>
+                </div>
+            {% else %}
+                <p>No posts yet. Be the first to post! 🌱</p>
+            {% endfor %}
         </div>
-    </main>
+
+
+    </div>
+</main>
+
 
     <script src="../static/js/comm.js"></script>
     <script src="../script.js"></script>

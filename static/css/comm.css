@@ -8,3 +8,40 @@
 .chat-interface, .posts-list {
     margin-bottom: 20px;
 }
+
+.post-form {
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.post-form input, .post-form textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.post-form button {
+    padding: 10px 15px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.post {
+    background: #fff;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-left: 4px solid #28a745;
+}
+
+.post .user {
+    font-weight: bold;
+    color: #333;
+}

@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         phoneForm.classList.add('hidden');
         otpForm.classList.remove('hidden');
         otpInput.focus();
+
     });
 
     // Handle OTP Form Submission
@@ -51,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Redirect to Home
             window.location.href = '../index.html'; 
+            console.log(`${phoneInput.value} logged in successfully.`);
         } else {
             otpError.textContent = 'Incorrect OTP. Please try again.';
             otpError.style.visibility = 'visible';
