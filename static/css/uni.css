@@ -1,6 +1,6 @@
 :root {
     --bg: #fbfbfc;
-    --primary: #257143;
+    --primary: #4CAF50;
     --card-bg: #fff;
     --card-radius: 15px;
     --shadow: 0 6px 24px rgba(46, 125, 50, 0.08);
@@ -23,6 +23,7 @@ body {
     background: var(--primary);
     color: #fff;
     padding: 1.4rem 1rem 1rem;
+    gap: 1em;
     flex-wrap: wrap;
 }
 
