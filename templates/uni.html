@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>University Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/css/uni.css">
+  <link rel="stylesheet" href="../static/css/global.css">
+</head>
+<body>
+  <header class="dashboard-header">
+    <div class="logo-avatar">
+      <img src="../img/uni/school.png" alt="University Logo" class="logo-img">
+      <span class="logo-text">University Dashboard</span>
+    </div>
+    <div class="user-actions">
+      <button id="lang-en">EN</button>
+      <button id="lang-hi">HI</button>
+      <button id="lang-pa">PA</button>
+      <button id="logoutBtn">Logout</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="stats-row">
+      <div class="stat-card">
+        <img src="../img/uni/resolved qury.png" class="stat-img" alt="Queries">
+        <div>
+          <div class="stat-title">Resolved Queries</div>
+          <div class="stat-count">18</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <img src="../img/uni/in progess.png" class="stat-img" alt="Progress">
+        <div>
+          <div class="stat-title">In Progress</div>
+          <div class="stat-count">5</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <img src="../img/uni/soil test.png" class="stat-img" alt="Soil Tests">
+        <div>
+          <div class="stat-title">Soil Tests Booked</div>
+          <div class="stat-count">7</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <img src="../img/uni/advisory up.png" class="stat-img" alt="Advisories">
+        <div>
+          <div class="stat-title">Advisories Uploaded</div>
+          <div class="stat-count">12</div>
+        </div>
+      </div>
+    </section>
+    <section class="dashboard-cards">
+      <div class="card queries-card">
+        <h2>
+          <img src="../img/uni/farmer que.png" class="stat-img""Icon"> Farmer Queries
+        </h2>
+        <ul class="query-list">
+          <li>
+            <strong>How to improve wheat yield?</strong>
+            <span class="status resolved">Resolved</span>
+          </li>
+          <li>
+            <strong>Why are my crops yellowing?</strong>
+            <span class="status in-progress">In Progress</span>
+          </li>
+          <li>
+            <strong>Natural pesticide advice?</strong>
+            <span class="status resolved">Resolved</span>
+          </li>
+        </ul>
+      </div>
+      <div class="card notification-card">
+        <h2>
+          <img src="../img/uni/school.png" class="stat-img" alt="Icon"> Soil Test Bookings (by Students Interns)
+        </h2>
+        <ul>
+          <li>
+            <img src="../img/uni/female-student.png" class="avatar" alt="Student">
+            <b>Sunita (Intern)</b> booked soil test for Farm #07 on Sept 23
+          </li>
+          <li>
+            <img src="../img/uni/male-student.png" class="avatar" alt="Student">
+            <b>Amandeep (Intern)</b> booked test for Farm #11 on Sept 24
+          </li>
+        </ul>
+      </div>
+      <div class="card verify-card">
+        <h2>
+          <img src="../img/uni/volunteering.png" class="stat-img" alt="Icon"> Community Solutions - Verification
+        </h2>
+        <ul>
+          <li>
+            <span>Compost use in sugarcane fields</span>
+            <button class="expert-btn">Expert Verify</button>
+          </li>
+          <li>
+            <span>Neem oil spray for pests</span>
+            <button class="expert-btn verified" disabled>Expert Verified</button>
+          </li>
+        </ul>
+      </div>
+      <div class="card upload-card">
+        <h2>
+          <img src="../img/uni/advice.png" class ="stat-img" alt="Icon"> Upload Advisory Video/Content
+        </h2>
+        <form id="advisory-form">
+          <input type="file" name="advisoryFile" accept="video/*,image/*,application/pdf" />
+          <textarea name="advisoryText" placeholder="Enter advisory content here..."></textarea>
+          <button type="submit">Upload</button>
+        </form>
+        <div id="upload-result"></div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-cta">
+      <img src="../img/uni/school.png" alt="Footer Image" class="footer-img">
+      <div>
+        <h3>University + Farmers: Building Modern Agriculture Together!</h3>
+        <span>Get the latest advisories and expert insights — direct from your campus.</span>
+      </div>
+    </div>
+  </footer>
+  <script src="../static/js/uni.js"></script>
+</body>
+</html>
