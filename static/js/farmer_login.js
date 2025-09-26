@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Handle OTP Form Submission
-    otpForm.addEventListener('submit', (e) => {
+    otpForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const otp = otpInput.value;
         if (!validateOtp(otp)) {
@@ -45,19 +45,23 @@ document.addEventListener('DOMContentLoaded', () => {
         if (otp === '123456') {
             console.log('OTP verified. Login successful!');
             alert('Login successful! Redirecting to Home...');
-
-            // ✅ Save login state
-            localStorage.setItem('isLoggedIn', 'true');
-            localStorage.setItem('username', phoneInput.value);
-
-            // Redirect to Home
-            window.location.href = '../index.html'; 
-            console.log(`${phoneInput.value} logged in successfully.`);
-        } else {
-            otpError.textContent = 'Incorrect OTP. Please try again.';
-            otpError.style.visibility = 'visible';
-        }
-    });
+            const postData = new URLSearchParams();
+            postData.append('phone', phoneInput.value);
+            postData.append('pincode', document.getElementById('pincode').value);
+            
+            const response = await fetch('/farmer_login', {
+                method: 'POST',
+                body: postData,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            });
+            if (response.redirected) {
+                window.location.href = response.url;
+            }
+    } else {    
+        otpError.textContent = 'Incorrect OTP. Please try again.';
+        otpError.style.visibility = 'visible';
+    }
+});
 
     // Simple validation functions
     function validatePhoneNumber(number) {

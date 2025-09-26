@@ -18,16 +18,20 @@
         <div class="header-top">
             <h1 class="logo">Kisaan Mitra</h1>
             <div class="login-container">
-                <a href="./farmer_login.html" class="nav-link login-btn"data-translate="nav_login">Login</a>
+                {% if phone %}
+                    <span>Welcome, {{ phone }}</span>
+                    <a href="/logout" class="nav-link">Logout</a>
+                {% else %}
+                    <a href="/farmer_login" class="nav-link">Login</a>
+                {% endif %}
             </div>
         </div>
         <nav class="navbar">
-            <a href="./home.html" class="nav-link active" data-translate="nav_home">Home 🏠</a>
-            <a href="./comm.html" class="nav-link"data-translate="nav_community">Community 🌱</a>
-            <a href="./crop_sugg.html" class="nav-link">Crop Suggestion❓</a>
-            <a href="./market.html" class="nav-link"data-translate="nav_market">Market Prices 💰</a>
-            <a href="./soil_health.html" class="nav-link"data-translate="nav_soil">Soil Health 🌾</a>      
-        </nav>
+            <a href="/" class="nav-link active">Home 🏠</a>
+            <a href="/community" class="nav-link">Community 🌱</a>
+            <a href="/crop_Suggestion" class="nav-link">Crop Suggestion❓</a>
+            <a href="/market" class="nav-link">Market Prices 💰</a>
+            <a href="/soil_health" class="nav-link">Soil Health 🌾</a>
         </nav>
     <div class="lang-switcher">
         <button id="lang-en" class="lang-btn" data-translate="lang_en">English</button>
@@ -63,19 +67,19 @@
                     <h3>AI Advisory</h3>
                     <p>Get personalized solutions for your crops.</p>
                 </div>
-                <a href="template/market.html" class="card-link">
+                <a href="/market" class="card-link">
                     <div class="card market-card">
                         <h3>Market Prices</h3>
                         <p>Live rates & future price predictions</p>
                     </div>
                 </a>
-                <a href="template/comm.html" class="card-link">
+                <a href="/community" class="card-link">
                     <div class="card community-card">
                         <h3>Farmer Community</h3>
                         <p>Connect with other farmers & experts</p>
                     </div>
                 </a>
-                <a href="template/soil_health.html" class="card-link">
+                <a href="/soil_health" class="card-link">
                     <div class="card soil-card">
                         <h3>Soil Health</h3>
                         <p>Test your soil and get recommendations</p>

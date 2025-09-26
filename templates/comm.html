@@ -17,29 +17,48 @@
         <div class="header-top">
             <h1 class="logo">Kisaan Mitra</h1>
             <div class="login-container">
-                <a href="./farmer_login.html" class="nav-link login-btn">Login</a>
+                {% if phone %}
+                    <span>Welcome, {{ phone }}</span>
+                    <a href="/logout" class="nav-link">Logout</a>
+                {% else %}
+                    <a href="/farmer_login" class="nav-link">Login</a>
+                {% endif %}
             </div>
         </div>
 
         <nav class="navbar">
-            <a href="./home.html" class="nav-link">Home 🏠</a>
-            <a href="./comm.html" class="nav-link active">Community 🌱</a>
-            <a href="./crop_sugg.html" class="nav-link">Crop Suggestion❓</a>
-            <a href="./market.html" class="nav-link">Market Prices 💰</a>
-            <a href="./soil_health.html" class="nav-link">Soil Health 🌾</a>
-
+            <a href="/" class="nav-link ">Home 🏠</a>
+            <a href="/community" class="nav-link active">Community 🌱</a>
+            <a href="/crop_Suggestion" class="nav-link">Crop Suggestion❓</a>
+            <a href="/market" class="nav-link">Market Prices 💰</a>
+            <a href="/soil_health" class="nav-link">Soil Health 🌾</a>
         </nav>
     </header>
 
     <main class="main-content">
         <h2 class="section-title">Farmer Community + AI Chatbot</h2>
         <div class="community-container">
-            <div class="chat-interface">
-                <p>Chat with the AI or post a query to the community.</p>
-            </div>
+
+            <!-- Post Form -->
+            <form method="POST" class="post-form">
+                <textarea name="content" placeholder="Write your query or message..." required></textarea>
+                <button type="submit">Post</button>
+            </form>
+
+            <!-- Posts Section -->
             <div class="posts-list">
-                <p>Community posts will appear here...</p>
+                {% for post in posts %}
+                    <div class="post">
+                        <div class="user">{{ post.user}} ,  {{post.Date_Time }}</div>
+                        <div class="content">{{ post.content }}</div>
+                        
+                    </div>
+                {% else %}
+                    <p>No posts yet. Be the first to post! 🌱</p>
+                {% endfor %}
             </div>
+
+
         </div>
     </main>
 

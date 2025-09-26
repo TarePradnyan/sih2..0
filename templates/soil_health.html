@@ -15,15 +15,20 @@
         <div class="header-top">
             <h1 class="logo">Kisaan Mitra</h1>
             <div class="login-container">
-                <a href="./farmer_login.html" class="nav-link login-btn">Login</a>
+                {% if phone %}
+                    <span>Welcome, {{ phone }}</span>
+                    <a href="/logout" class="nav-link">Logout</a>
+                {% else %}
+                    <a href="/farmer_login" class="nav-link">Login</a>
+                {% endif %}
             </div>
         </div>
         <nav class="navbar">
-            <a href="./home.html" class="nav-link">Home 🏠</a>
-            <a href="./comm.html" class="nav-link">Community 🌱</a>
-            <a href="./crop_sugg.html" class="nav-link">Crop Suggestion❓</a>
-            <a href="./market.html" class="nav-link">Market Prices 💰</a>
-            <a href="./soil_health.html" class="nav-link active">Soil Health 🌾</a>
+            <a href="/" class="nav-link ">Home 🏠</a>
+            <a href="/community" class="nav-link">Community 🌱</a>
+            <a href="/crop_Suggestion" class="nav-link">Crop Suggestion❓</a>
+            <a href="/market" class="nav-link">Market Prices 💰</a>
+            <a href="/soil_health" class="nav-link active">Soil Health 🌾</a>
         </nav>
     </header>
 

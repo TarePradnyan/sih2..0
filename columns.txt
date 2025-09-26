@@ -1,0 +1,3 @@
+.mode table
+.headers on
+SELECT * FROM post;

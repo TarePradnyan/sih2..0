@@ -13,19 +13,24 @@
   </head>
   <body>
     <header class="header">
-      <div class="header-top">
-        <h1 class="logo">Kisaan Mitra</h1>
-        <div class="login-container">
-          <a href="./farmer_login.html" class="nav-link login-btn">Login</a>
+        <div class="header-top">
+            <h1 class="logo">Kisaan Mitra</h1>
+            <div class="login-container">
+                {% if phone %}
+                    <span>Welcome, {{ phone }}</span>
+                    <a href="/logout" class="nav-link">Logout</a>
+                {% else %}
+                    <a href="/farmer_login" class="nav-link">Login</a>
+                {% endif %}
+            </div>
         </div>
-      </div>
-      <nav class="navbar">
-        <a href="./home.html" class="nav-link">Home 🏠</a>
-        <a href="./comm.html" class="nav-link">Community 🌱</a>
-        <a href="./crop_sugg.html" class="nav-link active">Crop Suggestion❓</a>
-        <a href="./market.html" class="nav-link">Market Prices 💰</a>
-        <a href="./soil_health.html" class="nav-link">Soil Health 🌾</a>
-      </nav>
+        <nav class="navbar">
+            <a href="/" class="nav-link ">Home 🏠</a>
+            <a href="/community" class="nav-link">Community 🌱</a>
+            <a href="/crop_Suggestion" class="nav-link active">Crop Suggestion❓</a>
+            <a href="/market" class="nav-link">Market Prices 💰</a>
+            <a href="/soil_health" class="nav-link">Soil Health 🌾</a>
+        </nav>
     </header>
 
 <main class="main-content">
@@ -33,7 +38,7 @@
         <div class="AI-tool-container">
           <h3>Crop Suggestion Tool</h3>
           <p>Get personalized crop suggestions based on your soil data and preferences.</p>
-          <a href="../template/crop_sugg.html" class="action-btn">Get Started</a>
+          <a href="/crop_Suggestion" class="action-btn">Get Started</a>
         </div>
         <div class="container">
             <div class="crop-container">
