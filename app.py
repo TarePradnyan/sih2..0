@@ -54,7 +54,7 @@ def community():
         posts = response.data
     else:
         posts = []
-    return render_template('community.html', phone=user, posts=posts)
+    return render_template('comm.html', phone=user, posts=posts)
 
 
 
