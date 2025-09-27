@@ -42,16 +42,17 @@ def community():
             'content': content,
             'Date_Time': time
         }).execute()
-        if response.status_code == 201:
+        if response.get("status_code") == 201:
             return jsonify({'message': 'Post added successfully!'})
         else:
-            return jsonify({'error': response.error}), 400
+            return jsonify({'error': response.get("error")}), 400
         
        
 
     response = supabase.from_('post').select('*').order('Date_Time', desc=True).execute()
-    if response.status_code == 200:
-        posts = response.data
+    print(response)
+    if response.get("status_code") == 200:
+        posts = response.get("data")
     else:
         posts = []
     return render_template('comm.html', phone=user, posts=posts)
