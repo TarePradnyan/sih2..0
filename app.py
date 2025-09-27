@@ -3,8 +3,7 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
-import supabase
-from supabase_client import Client
+from supabase_client import Client, supabase
 
 app = Flask(__name__)
 app.secret_key= "SIH25010"
