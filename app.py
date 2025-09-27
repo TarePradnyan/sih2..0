@@ -1,21 +1,26 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import os
+import supabase
+from supabase_client import Client
+
 app = Flask(__name__)
 app.secret_key= "SIH25010"
 CORS(app, origins=["https://sih25010.vercel.app/"])
 # Database setup
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///chat.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
+
+# db = SQLAlchemy(app)
 
 # Database model for posts
-class Post(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user = db.Column(db.String(50), nullable=False)
-    content = db.Column(db.Text, nullable=False)
-    Date_Time = db.Column(db.Text, nullable=False)
+# class Post(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     user = db.Column(db.String(50), nullable=False)
+#     content = db.Column(db.Text, nullable=False)
+#     Date_Time = db.Column(db.Text, nullable=False)
 
 @app.route("/")
 def home():
@@ -30,15 +35,34 @@ def community():
         user = session['phone']
         content = request.form['content']
         if user.strip() and content.strip():
-            new_post = Post(user=user, content=content,Date_Time=time)
-            db.session.add(new_post)
-            db.session.commit()
-        return redirect(url_for("community"))
+                response = supabase.from_('post').insert({
+            'user': user,
+            'content': content,
+            'Date_Time': time
+        }).execute()
+        if response.status_code == 201:
+            return jsonify({'message': 'Post added successfully!'})
+        else:
+            return jsonify({'error': response.error}), 400
+        
+       
+
+    response = supabase.from_('post').select('*').order('Date_Time', desc=True).execute()
+    if response.status_code == 200:
+        posts = response.data
+    else:
+        posts = []
+    return render_template('community.html', phone=user, posts=posts)
+
 
     posts = Post.query.order_by(Post.id.desc()).all()
     phone = session.get('phone')
-    return render_template("comm.html", phone=phone, posts=posts)
+    return redirect(url_for("community"))
 
+
+
+
+    return render_template("comm.html", phone=phone, posts=posts)
 @app.route("/crop_Suggestion")
 def crop_Suggestion():
     phone = session.get('phone')
@@ -75,6 +99,6 @@ def logout():
     return redirect(url_for('home'))
 
 if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
+    # with app.app_context():
+        # db.create_all()
     app.run(debug=True)
