@@ -30,11 +30,11 @@ def home():
 # Community page
 @app.route("/community", methods=["GET", "POST"])
 def community():
+    user = session.get('phone')
+    if not user:
+        return redirect(url_for('farmer_login'))
     if request.method == "POST":
         time= datetime.now().strftime("%H:%M    %d-%m-%Y")
-        user = session['phone']
-        if not user:
-            return redirect(url_for('farmer_login'))
         content = request.form['content']
         if user.strip() and content.strip():
                 response = supabase.from_('post').insert({
